@@ -13,7 +13,6 @@ This project provides a simple inventory and sales management system, allowing u
 - **Inventory Management:**
     - View all inventory items
     - Add new items to the inventory
-    - (Optional: Implement features like editing and deleting items)
 - **Bill Creation:**
     - Create new bills by selecting multiple items from the inventory
     - Calculate the total amount for each bill
