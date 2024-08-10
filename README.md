@@ -47,7 +47,7 @@ This project provides a simple inventory and sales management system, allowing u
 ## How to Run
 
 1. **Clone the Git repository:**
-   `git clone <repository_url>`
+   `git clone https://github.com/FadeHack/Inventory-Sales-Management`
 
 2. **Install dependencies (backend):**
    `cd Inventory-Sales-Management`
