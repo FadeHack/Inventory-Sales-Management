@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory and Sales Management System</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body class="bg-dark text-light">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+            <a class="navbar-brand" href="#"><i class="fas fa-store"></i> Management System</a>
+        </nav>
+        
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <!-- Alert Box -->
+                <div id="alertBox" class="alert alert-success alert-dismissible fade show" role="alert" style="display: none;">
+                    <strong id="alertMessage"></strong>
+                </div>
+                
+                <!-- Tabs -->
+                <ul class="nav nav-tabs bg-dark border-light" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="inventory-tab" data-toggle="tab" href="#inventory" role="tab" aria-controls="inventory" aria-selected="true">
+                            <i class="fas fa-boxes"></i> Inventory
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="bills-tab" data-toggle="tab" href="#bills" role="tab" aria-controls="bills" aria-selected="false">
+                            <i class="fas fa-receipt"></i> Bills
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content mt-4" id="myTabContent">
+                    <!-- Inventory Tab -->
+                    <div class="tab-pane fade show active" id="inventory" role="tabpanel" aria-labelledby="inventory-tab">
+                        <h2 class="text-light"><i class="fas fa-box"></i> Inventory Management</h2>
+                        <form id="inventory-form" class="mb-4">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="itemName"><i class="fas fa-tag"></i> Item Name</label>
+                                    <input type="text" class="form-control" id="itemName" placeholder="Enter item name" required>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="itemQuantity"><i class="fas fa-sort-numeric-up"></i> Quantity</label>
+                                    <input type="number" class="form-control" id="itemQuantity" placeholder="Enter quantity" required>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="itemPrice"><i class="fas fa-dollar-sign"></i> Price</label>
+                                    <input type="number" step="0.01" class="form-control" id="itemPrice" placeholder="Enter price" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Add Item</button>
+                        </form>
+                        <h3 class="text-light"><i class="fas fa-list"></i> Inventory List</h3>
+                        <table class="table table-dark table-striped" id="inventoryTable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col"><i class="fas fa-tag"></i> Name</th>
+                                    <th scope="col"><i class="fas fa-sort-numeric-up"></i> Quantity</th>
+                                    <th scope="col"><i class="fas fa-dollar-sign"></i> Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Inventory items will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Bills Tab -->
+                    <div class="tab-pane fade" id="bills" role="tabpanel" aria-labelledby="bills-tab">
+                        <h2 class="text-light"><i class="fas fa-file-invoice"></i> Bill Creation</h2>
+                        <form id="bill-form">
+                            <div id="bill-items-container">
+                                <!-- Dynamic Bill Items will be inserted here -->
+                                <div class="form-group bill-item d-flex align-items-start mt-3">
+                                    <div class="me-3 mr-3">
+                                        <label for="billItem"><i class="fas fa-box"></i> Select Item</label>
+                                        <select class="form-control bill-item-select" required>
+                                            <!-- Inventory items will be populated here -->
+                                        </select>
+                                    </div>
+                                    <div class="me-3">
+                                        <label for="billQuantity"><i class="fas fa-sort-numeric-up"></i> Quantity</label>
+                                        <input type="number" class="form-control bill-item-quantity" placeholder="Enter quantity" required>
+                                    </div>
+                                    <button type="button" class="btn btn-danger remove-item-btn justify-content-center" style="display: none;"><i class="fas fa-trash"></i> Remove Item</button>
+                                </div>
+                            </div>
+                            <button type="button" id="add-item-btn" class="btn btn-success mt-2"><i class="fas fa-plus"></i> Add Another Item</button>
+                            <button type="submit" class="btn btn-primary mt-2"><i class="fas fa-receipt"></i> Create Bill</button>
+                        </form>
+
+                        <h3 class="text-light mt-4"><i class="fas fa-list"></i> Bill List</h3>
+                        <table class="table table-dark table-striped" id="billTable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col"><i class="fas fa-boxes"></i> Items</th>
+                                    <th scope="col"><i class="fas fa-dollar-sign"></i> Total Amount</th>
+                                    <th scope="col"><i class="fas fa-calendar-alt"></i> Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Bills will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
