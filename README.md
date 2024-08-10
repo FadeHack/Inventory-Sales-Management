@@ -17,6 +17,7 @@ This project provides a simple inventory and sales management system, allowing u
     - Create new bills by selecting multiple items from the inventory
     - Calculate the total amount for each bill
     - View a list of all created bills
+    - View Deatils of a Specific Bill vis it's ID
 
 ## Screenshots
 
